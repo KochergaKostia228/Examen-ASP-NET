@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Examen_ASP_NET.Pages.UserHomeMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Examen_ASP_NET.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Linen">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="WindowTitleStyle">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,20"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource WindowTitleStyle}" Text="Welcome to Quiz App" FontSize="24"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Play"  Click="Play_Click"></Button>
+            <Button Style="{StaticResource ButtonStyle}" Content="Result test"  Click="Result_Click"></Button>
+            <Button Style="{StaticResource ButtonStyle}" Content="Exit" Click="Exit_Click"></Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Height="100" Width="100">
+            <Button Background="Black" Height="48" Width="48">
+                <Image Source="https://i.imgur.com/d58cEQ6.png" Stretch="Fill"/>
+            </Button>
+
+            <TextBlock x:Name="tbUser" Text="Guest" Height="19" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>
