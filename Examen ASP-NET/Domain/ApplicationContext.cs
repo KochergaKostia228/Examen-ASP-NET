@@ -24,6 +24,6 @@ namespace Examen_ASP_NET.Domain
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=mydatabase.db");
-        }
+        } 
     }
 }
