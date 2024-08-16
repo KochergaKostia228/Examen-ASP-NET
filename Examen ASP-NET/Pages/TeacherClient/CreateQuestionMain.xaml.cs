@@ -93,7 +93,7 @@ namespace Examen_ASP_NET.Pages.TeacherClient
                 {
                     foreach (var answer in question.Answers.ToList())
                     {
-                        question.Answers.Remove(answer);
+                        _context.Answers.Remove(answer);
                     }
                 }
                        

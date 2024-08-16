@@ -102,10 +102,10 @@ namespace Examen_ASP_NET.Pages.TeacherClient
                         {
                             foreach (var answer in question.Answers.ToList())
                             {
-                                question.Answers.Remove(answer);
+                                _context.Answers.Remove(answer);
                             }
                         }
-                        test.Questions.Remove(rew);
+                        _context.Question.Remove(rew);
                     }
                 }
 
@@ -113,7 +113,7 @@ namespace Examen_ASP_NET.Pages.TeacherClient
                 {
                     foreach (var answer in user.Results.ToList())
                     {
-                        user.Results.Remove(answer);
+                        _context.Results.Remove(answer);
                     }
                 }
                 
