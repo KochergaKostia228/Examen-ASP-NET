@@ -41,12 +41,12 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="250"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource WindowTitleStyle}" Text="Create test"/>
+            <TextBlock x:Name="tbText" Style="{StaticResource WindowTitleStyle}" Text="Create test"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                 <Label Content="Title:"  FontSize="10"></Label>
                 <TextBox x:Name="txtTitle" Width="175" Margin="1,0,0,0" />
@@ -57,7 +57,8 @@
                 <TextBox x:Name="txtDescription" Width="175" Margin="5,0,0,0" />
                 <Label x:Name="lblDescription" Visibility="Collapsed" Content=""  FontSize="8" Foreground="Red" HorizontalAlignment="Center"></Label>
             </StackPanel>
-            <Button Style="{StaticResource ButtonStyle}" Content="Create" Click="Create_Click"/>
+            <Button x:Name="btCreate" Style="{StaticResource ButtonStyle}" Content="Create" Click="Create_Click"/>
+            <Button x:Name="btSave" Style="{StaticResource ButtonStyle}" Content="Save" Click="Save_Click" Background="#FFD3D413" Visibility="Collapsed"/>
         </StackPanel>
 
         <ListView x:Name="LVTest" Grid.Row="1" BorderBrush="Black" Grid.ColumnSpan="2">
@@ -78,8 +79,11 @@
         </ListView>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
             <Button Style="{StaticResource ButtonStyle}" Content="Add Question" Click="Add_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Edit Test" Click="Edit_Click" Background="#FFBFDC13"/>
             <Button Style="{StaticResource ButtonStyle}" Content="Delete" Background="Red" Click="Delete_Click"/>
         </StackPanel>
         <Button Style="{StaticResource ButtonStyle}" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="25" Grid.ColumnSpan="2" Background="Black" Click="Back_Click"></Button>
+
+        
     </Grid>
 </UserControl>

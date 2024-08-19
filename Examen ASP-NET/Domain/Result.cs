@@ -13,5 +13,9 @@ namespace Examen_ASP_NET.Domain
         public User? User { get; set; }
         public int Score { get; set; }
 
+        public DateTime StartTime { get; set; }
+
+        public int Second {  get; set; }
+
     }
 }

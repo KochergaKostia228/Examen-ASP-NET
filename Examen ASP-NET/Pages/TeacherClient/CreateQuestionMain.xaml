@@ -41,12 +41,12 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="250"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource WindowTitleStyle}" Text="Create question"/>
+            <TextBlock x:Name="tbText" Style="{StaticResource WindowTitleStyle}" Text="Create question"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                 <Label Content="Text:"  FontSize="10"></Label>
                 <TextBox x:Name="txtText" Width="175" Margin="1,0,0,0" />
@@ -56,7 +56,8 @@
                 <Label Content="ImageUrl:"  FontSize="10"></Label>
                 <TextBox x:Name="txtImage" Width="175" Margin="5,0,0,0" />
             </StackPanel>
-            <Button Style="{StaticResource ButtonStyle}" Content="Create" Click="Create_Click"/>
+            <Button x:Name="btCreate" Style="{StaticResource ButtonStyle}" Content="Create" Click="Create_Click"/>
+            <Button x:Name="btSave" Style="{StaticResource ButtonStyle}" Content="Save" Click="Save_Click" Background="#FFD3D413" Visibility="Collapsed"/>
         </StackPanel>
 
         <ListView x:Name="LVQuestions" Grid.Row="1" BorderBrush="Black">
@@ -74,6 +75,7 @@
         </ListView>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
             <Button Style="{StaticResource ButtonStyle}" Content="Add Answers" Click="Add_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Edit Test" Click="Edit_Click" Background="#FFBFDC13"/>
             <Button Style="{StaticResource ButtonStyle}" Content="Delete" Background="Red" Click="Delete_Click"/>
         </StackPanel>
         <Button Style="{StaticResource ButtonStyle}" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="25" Grid.ColumnSpan="2" Background="Black" Click="Back_Click"></Button>

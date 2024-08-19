@@ -72,6 +72,12 @@ namespace Examen_ASP_NET.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("Second")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("TestId")
                         .HasColumnType("INTEGER");
 

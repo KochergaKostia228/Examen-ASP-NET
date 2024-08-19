@@ -29,6 +29,7 @@ namespace Examen_ASP_NET.Pages.TeacherClient
         int userId = 0;
 
         List<Test> Tests = new List<Test>();
+        Test SelectTest = new Test();
         ApplicationContext _context = new ApplicationContext();
         public CreateTestMain(int userId)
         {
@@ -135,6 +136,65 @@ namespace Examen_ASP_NET.Pages.TeacherClient
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigatorObject.Switch(new TeacherHomeMain(userId));
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            var select = LVTest.SelectedItem as Test;
+            if (select != null)
+            {
+                Background = Brushes.Azure;
+                btCreate.Visibility = Visibility.Collapsed;
+                btSave.Visibility = Visibility.Visible;
+                tbText.Text = "Edit Test";
+                txtTitle.Text = select.Title;
+                txtDescription.Text = select.Description;
+
+                SelectTest = select;
+            }
+            
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // Міняємо дизайн Label i TextBox
+            txtTitle.BorderBrush = Brushes.Black;
+            lblTitle.Visibility = Visibility.Collapsed;
+
+            txtDescription.BorderBrush = Brushes.Black;
+            lblDescription.Visibility = Visibility.Collapsed;
+
+
+            string title = txtTitle.Text;
+            string description = txtDescription.Text;
+
+            if (txtTitle.Text == "" || txtDescription.Text == "")
+            {
+                if (txtTitle.Text == "")
+                {
+                    txtTitle.BorderBrush = Brushes.Red;
+                    txtTitle.Text = "";
+                    lblTitle.Visibility = Visibility.Visible;
+                    lblTitle.Content = "Це поле пусте";
+                }
+
+                if (txtDescription.Text == "")
+                {
+                    txtDescription.BorderBrush = Brushes.Red;
+                    txtDescription.Text = "";
+                    lblDescription.Visibility = Visibility.Visible;
+                    lblDescription.Content = "Це поле пусте";
+                }
+            }
+            else
+            {
+                var model = _context.Tests.First(x => x.Id == SelectTest.Id);
+
+                model.Title = title;
+                model.Description = description;
+                _context.SaveChanges();
+                NavigatorObject.Switch(new CreateTestMain(userId));
+            }
         }
     }
 }

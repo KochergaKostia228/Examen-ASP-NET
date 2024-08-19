@@ -41,12 +41,12 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="250"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource WindowTitleStyle}" Text="Create question"/>
+            <TextBlock x:Name="tbText" Style="{StaticResource WindowTitleStyle}" Text="Create answer"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                 <Label Content="Text:"  FontSize="10"></Label>
                 <TextBox x:Name="txtText" Width="175" Margin="1,0,0,0" />
@@ -54,11 +54,12 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <CheckBox x:Name="cbCorrect">
-                    <Label Content="ImageUrl:"  FontSize="10" Margin="0,-2,0,0"/>
+                    <Label Content="Correct:"  FontSize="10" Margin="0,-2,0,0"/>
                 </CheckBox>
                 <Label x:Name="lblImage" Visibility="Collapsed" Content=""  FontSize="8" Foreground="Red" HorizontalAlignment="Center"></Label>
             </StackPanel>
-            <Button Style="{StaticResource ButtonStyle}" Content="Create" Click="Create_Click"/>
+            <Button x:Name="btCreate" Style="{StaticResource ButtonStyle}" Content="Create" Click="Create_Click"/>
+            <Button x:Name="btSave" Style="{StaticResource ButtonStyle}" Content="Save" Click="Save_Click" Background="#FFD3D413" Visibility="Collapsed"/>
         </StackPanel>
 
         <ListView x:Name="LVAnswers" Grid.Row="1" BorderBrush="Black">
@@ -78,6 +79,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Style="{StaticResource ButtonStyle}" Content="Edit Test" Click="Edit_Click" Background="#FFBFDC13"/>
             <Button Style="{StaticResource ButtonStyle}" Content="Delete" Background="Red" Click="Delete_Click"/>
         </StackPanel>
         <Button Style="{StaticResource ButtonStyle}" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="25" Grid.ColumnSpan="2" Background="Black" Click="Back_Click"></Button>

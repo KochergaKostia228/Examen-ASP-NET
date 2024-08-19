@@ -28,6 +28,8 @@ namespace Examen_ASP_NET.Pages.TeacherClient
         int testId = 0;
         int userId = 0;
         List<Answer> Answers = new List<Answer>();
+        Answer SelectAnswer = new Answer();
+
         ApplicationContext _context = new ApplicationContext();
 
         public CreateAnswersMain(int testId, int questionId, int userId)
@@ -101,6 +103,58 @@ namespace Examen_ASP_NET.Pages.TeacherClient
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigatorObject.Switch(new CreateQuestionMain(testId, userId));
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            var select = LVAnswers.SelectedItem as Answer;
+            if (select != null)
+            {
+                Background = Brushes.Azure;
+                btCreate.Visibility = Visibility.Collapsed;
+                btSave.Visibility = Visibility.Visible;
+                tbText.Text = "Edit answer";
+                txtText.Text = select.Text;
+                cbCorrect.IsChecked = select.IsCorrect;
+
+                SelectAnswer = select;
+            }
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // Міняємо дизайн Label i TextBox
+            txtText.BorderBrush = Brushes.Black;
+            lblText.Visibility = Visibility.Collapsed;
+
+            string text = txtText.Text;
+            bool correct;
+            if (cbCorrect.IsChecked == false)
+            {
+                correct = false;
+            }
+            else
+            {
+                correct = true;
+            }
+
+            if (txtText.Text == "")
+            {
+                txtText.BorderBrush = Brushes.Red;
+                txtText.Text = "";
+                lblText.Visibility = Visibility.Visible;
+                lblText.Content = "Це поле пусте";
+            }
+            else
+            {
+                var model = _context.Answers.First(x => x.Id == SelectAnswer.Id);
+
+                model.Text = text;
+                model.IsCorrect = correct;
+                _context.SaveChanges();
+                NavigatorObject.Switch(new CreateAnswersMain(testId, questionId, userId));
+            }
         }
     }
 }

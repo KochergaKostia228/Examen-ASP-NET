@@ -41,6 +41,7 @@
             <TextBlock x:Name="tbTrueQuestion" Style="{StaticResource WindowTitleStyle}"></TextBlock>
             <TextBlock x:Name="tbFalseQuestion" Style="{StaticResource WindowTitleStyle}"></TextBlock>
             <TextBlock x:Name="tbScore" Style="{StaticResource WindowTitleStyle}"></TextBlock>
+            <TextBlock x:Name="tbSecond" Style="{StaticResource WindowTitleStyle}"></TextBlock>
             <Button Style="{StaticResource ButtonStyle}" Content="Повернутися на головну сторінку" Height="34" Width="255" Click="Button_Click"></Button>
         </StackPanel>
     </Grid>

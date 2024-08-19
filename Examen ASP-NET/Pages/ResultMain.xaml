@@ -65,6 +65,15 @@
                             <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="Результат:"/>
                             <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="{Binding Score}"/>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="Час проходження:"/>
+                            <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="{Binding Second}"/>
+                            <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="cекунд"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="Дата проходження тесту:"/>
+                            <TextBlock Style="{StaticResource WindowTitleStyle}" Margin="5" HorizontalAlignment="Center" Text="{Binding StartTime}"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

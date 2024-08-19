@@ -53,7 +53,7 @@ namespace Examen_ASP_NET.Pages
             var select = LVTest.SelectedItem as Test;
             if (select != null)
             {
-                NavigatorObject.Switch(new TestMain(userId, select.Id, 0, 0));
+                NavigatorObject.Switch(new TestMain(userId, select.Id, 0, 0, 0));
             }
         }
     }

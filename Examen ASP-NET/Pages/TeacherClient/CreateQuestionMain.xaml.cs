@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Examen_ASP_NET.Pages.TeacherClient
@@ -29,6 +30,8 @@ namespace Examen_ASP_NET.Pages.TeacherClient
         int testId = 0;
         int userId = 0;
         List<Question> Questions = new List<Question>();
+        Question SelectQuestion = new Question();
+
         ApplicationContext _context = new ApplicationContext();
         public CreateQuestionMain(int testId, int userId)
         {
@@ -114,6 +117,54 @@ namespace Examen_ASP_NET.Pages.TeacherClient
             if (select != null)
             {
                 NavigatorObject.Switch(new CreateAnswersMain(testId, select.Id, userId));
+            }
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            var select = LVQuestions.SelectedItem as Question;
+            if (select != null)
+            {
+                Background = Brushes.Azure;
+                btCreate.Visibility = Visibility.Collapsed;
+                btSave.Visibility = Visibility.Visible;
+                tbText.Text = "Edit question";
+                txtText.Text = select.Text;
+                txtImage.Text = select.Image;
+
+                SelectQuestion = select;
+            }
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // Міняємо дизайн Label i TextBox
+            txtText.BorderBrush = Brushes.Black;
+            lblText.Visibility = Visibility.Collapsed;
+
+            txtImage.BorderBrush = Brushes.Black;
+
+
+            string text = txtText.Text;
+            string image = txtImage.Text;
+
+            if (txtText.Text == "")
+            {
+                txtText.BorderBrush = Brushes.Red;
+                txtText.Text = "";
+                txtImage.Text = "";
+                lblText.Visibility = Visibility.Visible;
+                lblText.Content = "Це поле пусте";
+            }
+            else
+            {
+                var model = _context.Question.First(x => x.Id == SelectQuestion.Id);
+
+                model.Text = text;
+                model.Image = image;
+                _context.SaveChanges();
+                NavigatorObject.Switch(new CreateQuestionMain(testId, userId));
             }
         }
     }
